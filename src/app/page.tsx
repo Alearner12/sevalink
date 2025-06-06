@@ -10,7 +10,8 @@ import {
   AlertCircle,
   Shield,
   Users,
-  TrendingUp
+  TrendingUp,
+  Activity
 } from 'lucide-react'
 
 export default function Home() {
@@ -44,6 +45,9 @@ export default function Home() {
               </Link>
               <Link href="/showcase" className="hover:text-blue-200 transition-colors">
                 Demo
+              </Link>
+              <Link href="/system-status" className="hover:text-blue-200 transition-colors">
+                System Status
               </Link>
             </nav>
           </div>
@@ -217,6 +221,9 @@ export default function Home() {
                 <Link href="/dashboard" className="block text-gray-400 hover:text-white">
                   Public Dashboard
                 </Link>
+                <Link href="/system-status" className="block text-gray-400 hover:text-white">
+                  System Status
+                </Link>
               </div>
             </div>
             
@@ -245,12 +252,18 @@ export default function Home() {
                   <MapPin className="w-4 h-4" />
                   <span>Patna, Bihar, India</span>
                 </div>
+                <div className="flex items-center space-x-2">
+                  <Activity className="w-4 h-4" />
+                  <Link href="/system-status" className="hover:text-white">
+                    System Status
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 SevaLink. All rights reserved. | Government of Bihar Initiative</p>
+            <p>&copy; 2024 SevaLink. All rights reserved. Built for transparent governance.</p>
           </div>
         </div>
       </footer>
