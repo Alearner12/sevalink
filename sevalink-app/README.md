@@ -2,6 +2,26 @@
 
 **SevaLink (सेवालिंक)** is a comprehensive, enterprise-grade digital platform that revolutionizes citizen-government interaction by providing a unified portal for filing, tracking, and resolving complaints across all government departments.
 
+## 📦 Project Structure
+
+```
+sevalink/
+├── sevalink-app/          # Main application code
+│   ├── public/            # Static files
+│   ├── src/               # Source code
+│   │   ├── app/           # Next.js app directory
+│   │   ├── lib/           # Utility functions and configurations
+│   │   └── models/        # Database models
+│   ├── .env.local         # Environment variables (gitignored)
+│   ├── package.json       # Project dependencies
+│   └── ...
+└── README.md            # This file
+```
+
+## 🚀 Getting Started
+
+**SevaLink (सेवालिंक)** is a comprehensive, enterprise-grade digital platform that revolutionizes citizen-government interaction by providing a unified portal for filing, tracking, and resolving complaints across all government departments.
+
 ## 🚀 Enhanced Features
 
 ### Core Functionality
@@ -41,6 +61,7 @@
 ## 📋 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+ 
 - MongoDB (Atlas or local)
 - Cloudinary account (for file uploads)
@@ -48,50 +69,56 @@
 
 ### Installation
 
-1. **Clone and Install**
+1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd sevalink
+   git clone https://github.com/Alearner12/sevalink.git
+   cd sevalink/sevalink-app
+   ```
+
+2. **Install dependencies**
+   ```bash
    npm install
    ```
 
-2. **Environment Setup**
-   Create `.env.local`:
+3. **Environment Setup**
+   Create a `.env.local` file in the `sevalink-app` directory with the following variables:
    ```env
+   # Application
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=your-secret-key-32-characters-minimum
+   
    # Database
    MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/sevalink
    MONGODB_DB=sevalink
    
-   # Authentication
-   NEXTAUTH_URL=http://localhost:3000
-   NEXTAUTH_SECRET=your-secret-key-32-characters-minimum
-   
-   # File Upload
+   # File Upload (Cloudinary)
    CLOUDINARY_CLOUD_NAME=your-cloud-name
    CLOUDINARY_API_KEY=your-api-key
    CLOUDINARY_API_SECRET=your-api-secret
    
-   # Notifications
+   # Email Notifications
    EMAIL_SERVER_HOST=smtp.gmail.com
    EMAIL_SERVER_PORT=587
    EMAIL_SERVER_USER=your-email@gmail.com
    EMAIL_SERVER_PASSWORD=your-app-password
    
-   # Optional SMS
-   TEXTLOCAL_API_KEY=your-textlocal-key
+   # Optional: SMS Notifications
+   # TEXTLOCAL_API_KEY=your-textlocal-key
    ```
 
-3. **Database Setup**
+4. **Start the development server**
    ```bash
    npm run dev
-   # Visit http://localhost:3001/api/seed to initialize database
    ```
 
-4. **Access Application**
-   - Main site: http://localhost:3001
-   - Admin panel: http://localhost:3001/admin
-   - Dashboard: http://localhost:3001/dashboard
-   - System status: http://localhost:3001/system-status
+5. **Initialize Database (Optional)**
+   Visit `http://localhost:3000/api/seed` to populate the database with sample data.
+
+6. **Access the Application**
+   - Main Application: http://localhost:3000
+   - Admin Dashboard: http://localhost:3000/admin
+   - User Dashboard: http://localhost:3000/dashboard
+   - System Status: http://localhost:3000/system-status
 
 ## 🛠️ API Endpoints
 
