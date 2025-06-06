@@ -1,195 +1,118 @@
-# SevaLink - सेवालिंक
-## Unified Citizen Complaint Portal
+# SevaLink - Public Grievance Redressal System
 
-**Connecting Citizens to Government Services**
+SevaLink is a comprehensive public grievance redressal system that connects citizens with government departments for efficient complaint resolution.
 
-SevaLink is a modern, unified platform that bridges the gap between citizens and government departments by providing a single portal for filing, tracking, and resolving complaints across all government services.
+## Features
 
-## 🚀 Features
+- **Citizen Portal**
+  - File new complaints with attachments
+  - Track complaint status in real-time
+  - View complaint history and updates
+  - Rate and provide feedback on resolved complaints
 
-### Week 1 MVP Features (Completed)
-- ✅ **Unified Complaint Portal** - Single platform for all government departments
-- ✅ **Smart Department Routing** - AI-powered automatic complaint routing
-- ✅ **Real-time Tracking** - Track complaint status with unique IDs
-- ✅ **Modern UI/UX** - Government-grade design with accessibility
-- ✅ **MongoDB Integration** - Scalable database with proper schemas
-- ✅ **Responsive Design** - Mobile-first approach for citizen convenience
+- **Department Portal**
+  - Manage assigned complaints
+  - Update complaint status
+  - Escalate issues when necessary
+  - Communicate with citizens
 
-### Supported Departments
-- ⚡ Bihar State Electricity Board (BSEB)
-- 🚂 Indian Railways
-- 🏛️ Municipal Services
-- 👮 Police Department
-- 💧 Water Supply
-- 🛣️ Roads & Transport
-- 🏥 Health Services
-- 📚 Education Department
+- **Admin Dashboard**
+  - Monitor all complaints
+  - Assign complaints to departments
+  - Generate reports and analytics
+  - Manage system users
 
-## 🛠️ Technology Stack
+## Tech Stack
 
-- **Frontend**: Next.js 14, TypeScript, Tailwind CSS
-- **Backend**: Next.js API Routes, Node.js
-- **Database**: MongoDB Atlas with Mongoose ODM
-- **UI Components**: Headless UI, Lucide React Icons
-- **Styling**: Custom government color scheme with Indian flag colors
+- **Frontend**: Next.js 13+ (App Router), TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: NextAuth.js
+- **File Storage**: Local file system (can be extended to AWS S3/Cloudinary)
+- **Deployment**: Vercel (Frontend) + MongoDB Atlas (Database)
 
-## 📋 Prerequisites
+## Getting Started
 
-- Node.js 18+ 
-- npm or yarn
-- MongoDB Atlas account (free tier works)
+### Prerequisites
 
-## 🚀 Quick Start
+- Node.js 18+
+- MongoDB Atlas account or local MongoDB instance
+- Git
 
-1. **Clone the repository**
+### Installation
+
+1. Clone the repository:
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Alearner12/sevalink.git
    cd sevalink
    ```
 
-2. **Install dependencies**
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. **Set up environment variables**
-   Create a `.env.local` file in the root directory:
-   ```env
-   MONGODB_URI=mongodb+srv://sid1618033:aYUuMxdFFdXQPHDy@cluster0.6dpushd.mongodb.net/sevalink?retryWrites=true&w=majority
-   NEXTAUTH_URL=http://localhost:3000
-   NEXTAUTH_SECRET=your-secret-key
-   ```
-
-4. **Seed the database**
+3. Set up environment variables:
    ```bash
-   curl -X POST http://localhost:3000/api/seed
+   cp .env.local.example .env.local
+   ```
+   Update the values in `.env.local` with your configuration.
+
+4. Run the development server:
+   ```bash
+   npm run dev
    ```
 
-5. **Start the development server**
-```bash
-npm run dev
-   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-6. **Open your browser**
-   Navigate to `http://localhost:3000`
+## Environment Variables
 
-## 📱 Usage
+Create a `.env.local` file in the root directory with the following variables:
 
-### For Citizens
-1. **File a Complaint**: Visit `/complaints/new` to submit a new complaint
-2. **Track Status**: Use `/complaints/track` with your complaint ID
-3. **Get Updates**: Receive real-time status updates
+```env
+# MongoDB
+MONGODB_URI=your_mongodb_connection_string
+MONGODB_DB=sevalink
 
-### For Government Officials
-1. **Admin Dashboard**: Access department-specific complaint management
-2. **Update Status**: Change complaint status and add notes
-3. **View Analytics**: Monitor department performance metrics
+# NextAuth
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
 
-## 🗄️ Database Schema
-
-### Complaints Collection
-```javascript
-{
-  complaintId: "SVL2024123456",
-  title: "Power outage in Gandhi Maidan",
-  description: "Detailed complaint description...",
-  category: "electricity",
-  priority: "high",
-  status: "in_progress",
-  citizen: {
-    name: "Rahul Kumar",
-    email: "rahul@email.com",
-    phone: "+91-9876543210",
-    address: "Patna, Bihar"
-  },
-  department: {
-    id: ObjectId,
-    name: "BSEB"
-  },
-  timeline: [...],
-  createdAt: Date,
-  updatedAt: Date
-}
+# Other
+NODE_ENV=development
 ```
 
-### Departments Collection
-```javascript
-{
-  name: "Bihar State Electricity Board",
-  shortName: "BSEB",
-  category: "utilities",
-  location: ["patna", "bihar"],
-  responseTime: 48,
-  isActive: true
-}
+## Project Structure
+
+```
+sevalink/
+├── src/
+│   ├── app/                  # Next.js 13+ App Router
+│   │   ├── api/              # API routes
+│   │   ├── auth/             # Authentication pages
+│   │   ├── dashboard/        # User dashboard
+│   │   └── admin/            # Admin dashboard
+│   ├── components/           # Reusable components
+│   ├── lib/                  # Utility functions
+│   ├── models/               # Database models
+│   └── types/                # TypeScript type definitions
+├── public/                   # Static files
+└── scripts/                  # Utility scripts
 ```
 
-## 🔧 API Endpoints
-
-- `POST /api/complaints` - File a new complaint
-- `GET /api/complaints` - Get complaints list (with filters)
-- `GET /api/complaints/[id]` - Get specific complaint details
-- `PATCH /api/complaints/[id]` - Update complaint status
-- `POST /api/seed` - Seed database with sample data
-
-## 🎨 Design System
-
-SevaLink uses a government-approved color scheme:
-- **Primary Blue**: #3b82f6 (Digital India theme)
-- **Saffron**: #f17a0e (Indian flag inspired)
-- **Green**: #22c55e (Progress and success)
-
-## 📈 Week-by-Week Development Plan
-
-### ✅ Week 1: Foundation (Completed)
-- Core complaint filing and tracking system
-- Database models and API routes
-- Responsive UI with government branding
-- Smart department routing
-
-### 🔄 Week 2: Smart Features (In Progress)
-- SMS notifications integration
-- Photo/document upload
-- AI-powered categorization
-- Public dashboard
-
-### 📋 Week 3: Polish & Security
-- Professional UI/UX refinements
-- Security hardening
-- Performance optimization
-- User testing
-
-### 🚀 Week 4: Launch & Outreach
-- Government presentations
-- Pilot program setup
-- Media outreach
-- Stakeholder engagement
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- Government of Bihar for inspiration
-- Digital India initiative
-- Open source community
-- Citizens of Bihar for their feedback
-
-## 📞 Contact
-
-- **Email**: help@sevalink.gov.in
-- **Phone**: +91-612-2234567
-- **Address**: Patna, Bihar, India
-
----
-
-**SevaLink - Transforming Citizen-Government Interaction** 🇮🇳
+- Built with ❤️ for better governance and citizen services
+- Inspired by the need for transparent grievance redressal systems
